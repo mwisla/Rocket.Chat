@@ -106,6 +106,7 @@ export const FilesDropTarget = ({
 			className={createClassName(styles, 'drop', { overlayed, dragover: dragLevel > 0 }, [className])}
 			style={style}
 			id='files-drop-target'
+			role="document"
 		>
 			<input
 				ref={inputRef}

@@ -22,6 +22,7 @@ import EmojiIcon from '../../icons/smile.svg';
 import styles from './styles.scss';
 
 import 'emoji-mart/css/emoji-mart.css';
+import { th } from 'date-fns/locale';
 
 const Picker = lazy(async () => {
 	const { Picker } = await import('emoji-mart');

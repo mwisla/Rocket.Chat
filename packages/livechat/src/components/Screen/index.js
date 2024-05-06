@@ -113,7 +113,7 @@ export const Screen = ({ title, color, agent, children, className, unread, trigg
 			<div 
 				role="dialog" 
 				aria-labelledby="dialog-header"
-				aria-describedby="dialog-messages"
+				aria-describedby="files-drop-target"
 				className={createClassName(styles, 'screen__inner', { fitTextSize: triggered }, [className])}>
 				<PopoverContainer>
 					{!triggered && (

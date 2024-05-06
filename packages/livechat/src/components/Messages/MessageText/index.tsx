@@ -17,7 +17,7 @@ export const MessageText = memo(({ text, system, className, style = {} }: Messag
 	const bigEmoji = isBigEmoji(text);
 
 	return (
-		<div className={createClassName(styles, 'message-text', { system, bigEmoji }, [className])} style={style}>
+		<div aria-live="polite" aria-label={text} className={createClassName(styles, 'message-text', { system, bigEmoji }, [className])} style={style}>
 			<MarkdownBlock text={shortnameToUnicode(text)} emoticons={true} />
 		</div>
 	);
