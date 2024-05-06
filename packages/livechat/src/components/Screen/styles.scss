@@ -139,3 +139,18 @@ $max-lines: 12;
 .screen__agent-email {
 	margin: 5px;
 }
+
+.screen__chat-button__message{
+	position: absolute;
+    bottom: 0;
+    font-size: x-small;
+    white-space: pre-wrap;
+    line-height: normal;
+    font-weight: bold;
+}
+
+.screen__chat-button__svg svg{
+	position: absolute;
+    top: 0;
+    padding: 0px 10px 10px 10px;
+}

@@ -110,7 +110,11 @@ export const Screen = ({ title, color, agent, children, className, unread, trigg
 					Close
 				</Button>
 			)}
-			<div className={createClassName(styles, 'screen__inner', { fitTextSize: triggered }, [className])}>
+			<div 
+				role="dialog" 
+				aria-labelledby="dialog-header"
+				aria-describedby="dialog-messages"
+				className={createClassName(styles, 'screen__inner', { fitTextSize: triggered }, [className])}>
 				<PopoverContainer>
 					{!triggered && (
 						<ScreenHeader

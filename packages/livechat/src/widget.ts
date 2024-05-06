@@ -48,8 +48,8 @@ type InitializeParams = {
 
 const WIDGET_OPEN_WIDTH = 365;
 const WIDGET_OPEN_HEIGHT = 525;
-const WIDGET_MINIMIZED_WIDTH = 54;
-const WIDGET_MINIMIZED_HEIGHT = 54;
+const WIDGET_MINIMIZED_WIDTH = 70;
+const WIDGET_MINIMIZED_HEIGHT = 70;
 const WIDGET_MARGIN = 16;
 
 window.RocketChat = window.RocketChat || { _: [] };

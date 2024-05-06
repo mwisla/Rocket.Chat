@@ -1,6 +1,7 @@
 {
   "translation": {
     "accept": "Accept",
+    "agent_typing": "Agent typing",
     "are_you_sure_you_want_to_finish_this_chat": "Are you sure you want to finish this chat?",
     "are_you_sure_you_want_to_remove_all_of_your_person": "Are you sure you want to remove all of your personal data?",
     "are_you_sure_you_want_to_switch_the_department": "Are you sure you want to switch the department?",
@@ -9,6 +10,7 @@
     "change_department": "Change department",
     "change_department_1": "Change Department",
     "chat_finished": "Chat Finished",
+    "chat_live": "Chat live",
     "chat_now": "Chat now",
     "chat_started": "Chat started",
     "choose_a_department": "Choose a department...",

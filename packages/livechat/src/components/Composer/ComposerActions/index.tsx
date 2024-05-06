@@ -1,6 +1,7 @@
 import type { ComponentChildren } from 'preact';
 import type { CSSProperties } from 'preact/compat';
 import { memo } from 'preact/compat';
+import Tooltip from '../../Tooltip';
 
 import { createClassName } from '../../../helpers/createClassName';
 import styles from './styles.scss';
@@ -12,7 +13,9 @@ type ComposerActionsProps = {
 };
 
 export const ComposerActions = memo(({ className, style = {}, children }: ComposerActionsProps) => (
-	<div className={createClassName(styles, 'composer__actions', {}, [className])} style={style}>
-		{children}
-	</div>
+	<Tooltip.Container>
+		<div className={createClassName(styles, 'composer__actions', {}, [className])} style={style}>
+			{children}
+		</div>
+	</Tooltip.Container>
 ));

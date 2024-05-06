@@ -32,6 +32,7 @@ export const Header = ({
 	...props
 }: HeaderProps) => (
 	<header
+		id="dialog-header"
 		className={createClassName(styles, 'header', { large }, [className])}
 		style={style || backgroundColor || color ? { ...(style || {}), backgroundColor, color } : undefined}
 		{...props}

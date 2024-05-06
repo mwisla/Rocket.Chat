@@ -73,4 +73,8 @@ $form-input-disabled-opacity: $disabled-opacity;
 		color: $form-input-error-color;
 		border-color: $form-input-error-border-color;
 	}
+	
+	&::placeholder {
+		color: $form-input-placeholder-color;
+	}
 }

@@ -14,8 +14,8 @@ $alert-error-background-color: $color-red;
 	overflow: hidden;
 
 	width: 100%;
-	height: 28px;
-	padding: 6px 16px;
+	//height: 28px;
+	padding: 4px 16px;
 
 	letter-spacing: 0;
 
@@ -32,8 +32,8 @@ $alert-error-background-color: $color-red;
 	&__content {
 		overflow: hidden;
 
-		white-space: nowrap;
-		text-overflow: ellipsis;
+		// white-space: nowrap;
+		// text-overflow: ellipsis;
 	}
 
 	&__close {

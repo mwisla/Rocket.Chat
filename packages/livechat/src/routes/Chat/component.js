@@ -223,7 +223,7 @@ class Chat extends Component {
 							onChange={this.handleChangeText}
 							placeholder={t('type_your_message_here')}
 							value={text}
-							notifyEmojiSelect={(click) => {
+							/*notifyEmojiSelect={(click) => {
 								this.notifyEmojiSelect = click;
 							}}
 							handleEmojiClick={this.handleEmojiClick}
@@ -233,7 +233,7 @@ class Chat extends Component {
 										<EmojiIcon width={20} height={20} />
 									</ComposerAction>
 								</ComposerActions>
-							}
+							}*/
 							post={
 								<ComposerActions>
 									{text.length === 0 && uploads && (
@@ -241,10 +241,10 @@ class Chat extends Component {
 											<PlusIcon width={20} height={20} />
 										</ComposerAction>
 									)}
-									{text.length > 0 && (
-										<ComposerAction onClick={this.handleSendClick}>
-											<SendIcon width={20} height={20} />
-										</ComposerAction>
+									{text.length > 0 || true && (
+										<ComposerAction onClick={this.handleSendClick} title={t("send")}>
+										<SendIcon width={20} height={20} />
+									</ComposerAction>
 									)}
 								</ComposerActions>
 							}
