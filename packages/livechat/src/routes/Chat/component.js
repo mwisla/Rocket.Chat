@@ -242,7 +242,7 @@ class Chat extends Component {
 											<PlusIcon width={20} height={20} />
 										</ComposerAction>
 									)}
-									{text.length > 0 || true && (
+									{(text.length > 0 || true) && (
 										<ComposerAction onClick={this.handleSendClick} title={t("send")}>
 										<SendIcon width={20} height={20} />
 									</ComposerAction>
