@@ -26,7 +26,7 @@ export default i18next
 	})
 	.use(initReactI18next)
 	.init({
-		lng: normalizeLanguageString(configLanguage() || browserLanguage()),
+		lng: normalizeLanguageString('pl-PL' /*force pl lang*/ || configLanguage() || browserLanguage()),
 		fallbackLng: 'en',
 		react: {
 			useSuspense: false,
