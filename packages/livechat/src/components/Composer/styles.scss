@@ -8,6 +8,7 @@ $composer-border-color: $color-text-light;
 $composer-border-radius: $default-border-radius;
 $composer-background-color: $bg-color-white;
 $composer-focused-border-color: $color-text-grey;
+$composer-focused-border-width: $default-border-focused;
 
 $composer-input-min-height: 20px;
 $composer-input-max-height: 150px;
@@ -29,10 +30,13 @@ $composer-input-placeholder-color: $color-text-light;
 	border: $composer-border-width solid $composer-border-color;
 	border-radius: $composer-border-radius;
 	background-color: $composer-background-color;
+	
 	align-items: flex-end;
+	box-shadow: 0px 0px 0px 0px $composer-border-color;
 
 	&:focus-within {
 		border-color: $composer-focused-border-color;
+		box-shadow: 0px 0px 0px 1px $composer-border-color;
 	}
 
 	&__input {

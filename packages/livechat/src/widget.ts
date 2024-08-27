@@ -193,6 +193,7 @@ const createWidget = (url: string) => {
 	iframe.style.height = '100%';
 	iframe.style.border = 'none';
 	iframe.style.backgroundColor = 'transparent';
+	iframe.style.setProperty('outline', 'none', 'important');
 
 	container.appendChild(iframe);
 	widget.appendChild(container);
