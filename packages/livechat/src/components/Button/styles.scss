@@ -35,7 +35,8 @@ $button-badge-font-family: $font-family;
 $button-badge-font-size: 0.8125rem;
 $button-badge-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
-$button-icon-size: 70px;
+$button-icon-width: 100px;
+$button-icon-height: 56px;
 $button-icon-border-radius: 4px;
 $button-icon-padding: 10px;
 
@@ -175,8 +176,8 @@ $button-icon-padding: 10px;
 	}
 
 	&--icon {
-		/*width: $button-icon-size;
-		height: $button-icon-size;*/
+		width: $button-icon-width;
+		height: $button-icon-height;
 		padding: $button-icon-padding;
 
 		border-radius: $button-icon-border-radius;

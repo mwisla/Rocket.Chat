@@ -31,7 +31,7 @@ export const ChatButton = ({ text, minimized, badge, onClick, triggered = false,
 			icon={minimized || triggered ? openIcon : <CloseIcon />}
 			badge={badge}
 			onClick={onClick}
-			className={`${(minimized || triggered ? createClassName(styles,'screen__chat-button__svg') : '')} ${className}`}
+			className={`${(minimized || triggered ? createClassName(styles,'screen__chat-button__svg') : createClassName(styles,'screen__chat-close_button__svg'))} ${className}`}
 			data-qa-id='chat-button'
 		>
 			{text}
