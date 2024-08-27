@@ -28,7 +28,8 @@ type ButtonProps = {
 	img?: string;
 	onClick?: JSXInternal.MouseEventHandler<HTMLButtonElement>;
 	onMouseUp?: JSXInternal.MouseEventHandler<HTMLButtonElement>;
-	full?: boolean;
+	full?: boolean;	
+	label?: string;
 };
 
 export const Button = ({
@@ -50,6 +51,7 @@ export const Button = ({
 	children,
 	img,
 	full,
+	label,
 	...props
 }: ButtonProps) => {
 	const { t } = useTranslation();
@@ -60,7 +62,7 @@ export const Button = ({
 			disabled={disabled}
 			onClick={onClick}
 			onMouseUp={handleMouseUp}
-			aria-label={icon && Array.isArray(children) ? children[0] : children}
+			aria-label={label || (icon && Array.isArray(children) ? children[0] : children)}
 			className={createClassName(
 				styles,
 				'button',
