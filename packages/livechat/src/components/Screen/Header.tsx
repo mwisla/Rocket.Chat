@@ -107,7 +107,7 @@ const ScreenHeader = ({
 						</Header.Action>
 					</Tooltip.Trigger>
 					{(expanded || !windowed) && (
-						<Tooltip.Trigger content={minimized ? t('restore_chat') : t('minimize_chat')}>
+						<Tooltip.Trigger content={minimized ? t('restore_chat') : t('minimize_chat')} placement='bottom-left'>
 							<Header.Action aria-label={minimized ? t('restore_chat') : t('minimize_chat')} onClick={minimized ? onRestore : onMinimize}>
 								{minimized ? <RestoreIcon width={20} height={20} /> : <MinimizeIcon width={20} height={20} />}
 							</Header.Action>

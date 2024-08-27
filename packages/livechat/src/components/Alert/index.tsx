@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { createClassName } from '../../helpers/createClassName';
 import CloseIcon from '../../icons/close.svg';
 import styles from './styles.scss';
+import Tooltip from '../Tooltip';
 
 type AlertProps = {
 	id?: string;
@@ -58,9 +59,12 @@ const Alert = ({
 		>
 			<div className={createClassName(styles, 'alert__content')}>{children}</div>
 			{!hideCloseButton && (
-				<button onClick={handleDismiss} className={createClassName(styles, 'alert__close')} aria-label={t('dismiss_this_alert')}>
-					<CloseIcon width={20} height={20} />
-				</button>
+				<Tooltip.Container>
+					<Tooltip.Trigger content={t('dismiss_this_alert')} placement='bottom-left'>
+						<button onClick={handleDismiss} className={createClassName(styles, 'alert__close')} aria-label={t('dismiss_this_alert')}>
+							<CloseIcon width={20} height={20} />
+						</button>
+					</Tooltip.Trigger></Tooltip.Container>
 			)}
 		</div>
 	);
