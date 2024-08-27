@@ -141,19 +141,14 @@ $max-lines: 12;
 }
 
 .screen__chat-button__message{
-	position: absolute;
-    bottom: 0;
-    font-size: x-small;
     white-space: pre-wrap;
     line-height: normal;
     font-weight: bold;
+    padding-left: 10px;
+    font-size: medium;
 }
 
 .screen__chat-button__svg svg{
-	position: absolute;
-    top: 0;
-    padding: 0px;
-	margin: 5px;
-	width: 44px;
-	height: 44px;
+	width: 32px;
+    height: 32px;
 }

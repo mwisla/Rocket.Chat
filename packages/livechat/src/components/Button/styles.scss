@@ -81,6 +81,7 @@ $button-icon-padding: 10px;
 	font-weight: $button-font-weight;
 	line-height: $button-line-height;
 	justify-content: center;
+	align-items: center;
 
 	@include state(var(--color, $button-background-color), transparent);
 	@include pressable-button($button-active-displacement, $button-border-width);
@@ -174,8 +175,8 @@ $button-icon-padding: 10px;
 	}
 
 	&--icon {
-		width: $button-icon-size;
-		height: $button-icon-size;
+		/*width: $button-icon-size;
+		height: $button-icon-size;*/
 		padding: $button-icon-padding;
 
 		border-radius: $button-icon-border-radius;
