@@ -106,6 +106,7 @@
     "you_browser_doesn_t_support_audio_element": "Twoja przeglądarka nie wspiera elementów audio",
     "you_browser_doesn_t_support_video_element": "Twoja przeglądarka nie wspiera elementów video",
     "your_spot_is_spot": "Twoje miejsce to #{{spot}}",
-    "your_spot_is_spot_estimated_wait_time_estimatedwai": "Twoje miejsce to #{{spot}} (Szacowany czas oczekiwania: {{estimatedWaitTime}})"
+    "your_spot_is_spot_estimated_wait_time_estimatedwai": "Twoje miejsce to #{{spot}} (Szacowany czas oczekiwania: {{estimatedWaitTime}})",
+    "user_picture":"Zdjęcie użytkownika"
   }
 }

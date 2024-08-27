@@ -3,6 +3,7 @@ import type { CSSProperties } from 'preact/compat';
 
 import { createClassName } from '../../helpers/createClassName';
 import styles from './styles.scss';
+import { useTranslation } from 'react-i18next';
 
 type AvatarProps = {
 	small?: boolean;
@@ -12,6 +13,7 @@ type AvatarProps = {
 	status?: string;
 	className?: string;
 	style?: CSSProperties;
+	t:any;
 };
 
 type AvatarState = {
@@ -35,9 +37,9 @@ export class Avatar extends Component<AvatarProps, AvatarState> {
 		this.setState({ errored: true });
 	};
 
-	render = ({ small, large, src, description, status, className, style }: AvatarProps, { errored }: AvatarState) => (
+	render = ({ small, large, src, description, status, className, style , t}: AvatarProps, { errored }: AvatarState) => (
 		<div
-			aria-label='User picture'
+			aria-label={t('user_picture')}
 			className={createClassName(styles, 'avatar', { small, large, nobg: src && !errored }, [className])}
 			style={style}
 		>
