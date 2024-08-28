@@ -32,7 +32,6 @@
     "error_getting_call_alert": "Podczas uzyskiwania powiadomienia o połączeniu wystąpił błąd.",
     "error_removing_user_data": "Wystąpił błąd podczas usuwania danych.",
     "error_starting_a_new_conversation_reason": "Wystąpił błąd podczas tworzenia rozmowy: {{reason}}",
-    "no-agent-online": "Przepraszamy, brak dostępnych agentów",
     "expand_chat": "Otwórz w nowym oknie",
     "field_required": "Pole wymagane",
     "file_exceeds_allowed_size_of_size": "Plik przekroczył dopuszczalny rozmiar {{size}}.",
@@ -92,6 +91,8 @@
     "type_your_message_here": "Wpisz tu swoją wiadomość",
     "unread_messages_count_one": "{{count}} nieprzeczytana wiadomość",
     "unread_messages_count_other": "{{count}} nieprzeczytanych wiadomości",
+    "messages_count_one": "{{count}} wiadomość",
+    "messages_count_other": "{{count}} wiadomości",
     "unread_messages": "nieprzeczytane wiadomości",
     "user_added_by": "Użytkownik dodany przez",
     "user_joined": "Użytkownik dołączył",
@@ -107,6 +108,8 @@
     "you_browser_doesn_t_support_video_element": "Twoja przeglądarka nie wspiera elementów video",
     "your_spot_is_spot": "Twoje miejsce to #{{spot}}",
     "your_spot_is_spot_estimated_wait_time_estimatedwai": "Twoje miejsce to #{{spot}} (Szacowany czas oczekiwania: {{estimatedWaitTime}})",
-    "user_picture":"Zdjęcie użytkownika"
+    "user_picture":"Zdjęcie użytkownika",
+    "no-agent-online": "Przepraszamy, brak dostępnych agentów",
+    "error-too-many-requests": "Błąd, zbyt wiele żądań. Proszę zwolnić. Musisz odczekać {{seconds}} sekund przed ponowną próbą tego punktu końcowego."
   }
 }

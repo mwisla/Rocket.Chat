@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { createClassName } from '../../helpers/createClassName';
 import styles from './styles.scss';
+import Tooltip from '../Tooltip';
 
 const handleMouseUp: JSXInternal.EventHandler<JSXInternal.TargetedMouseEvent<HTMLButtonElement>> = ({ target }) =>
 	(target as HTMLButtonElement)?.blur();
@@ -28,7 +29,7 @@ type ButtonProps = {
 	img?: string;
 	onClick?: JSXInternal.MouseEventHandler<HTMLButtonElement>;
 	onMouseUp?: JSXInternal.MouseEventHandler<HTMLButtonElement>;
-	full?: boolean;	
+	full?: boolean;
 	label?: string;
 };
 
@@ -91,9 +92,13 @@ export const Button = ({
 			{...props}
 		>
 			{badge ? (
-				<span role='status' aria-label={t('unread_messages_count', { count: badge })} className={createClassName(styles, 'button__badge')}>
-					{badge}
-				</span>
+				<Tooltip.Container>
+					<Tooltip.Trigger content={t('messages_count' + (badge == 1 ? '_one' : '_other'), { count: badge })} placement='bottom-left'>
+						<span role='status' aria-label={t('messages_count' + (badge == 1 ? '_one' : '_other'), { count: badge })} className={createClassName(styles, 'button__badge')}>
+							{badge}
+						</span>
+					</Tooltip.Trigger>
+				</Tooltip.Container>
 			) : null}
 			{!img && (icon || children)}
 		</button>

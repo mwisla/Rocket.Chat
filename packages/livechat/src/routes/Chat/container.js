@@ -108,8 +108,12 @@ class ChatContainer extends Component {
 			return newRoom;
 		} catch (error) {
 			let reason = error ? error.error : '';
-			if(reason.includes('[no-agent-online]')) {
+			if (reason.includes('[no-agent-online]')) {
 				reason = i18n.t('no-agent-online');
+			}
+			else if (reason.includes('[error-too-many-requests]')) {
+				const sec = reason.match(/\d+/);
+				reason = i18n.t('error-too-many-requests', { seconds: (Number.isNaN(Number.parseInt(sec)) ? null : Number.parseInt(sec)) ?? 60 });
 			}
 			const alert = {
 				id: createToken(),

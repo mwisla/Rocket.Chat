@@ -13,7 +13,7 @@ $header-height-large: 77px;
 $header-action-active-displacement: 2px;
 
 .header {
-	z-index: 1;
+	/*z-index: 1;*/
 
 	display: flex;
 	flex: 0 0 auto;
@@ -108,7 +108,7 @@ $header-action-active-displacement: 2px;
 
 	&__post {
 		position: absolute;
-		z-index: 10;
+		z-index: 1;
 		top: $header-height;
 		right: 0;
 		left: 0;

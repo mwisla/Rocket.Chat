@@ -32,7 +32,6 @@
     "error_getting_call_alert": "Error getting call alert.",
     "error_removing_user_data": "Error removing user data.",
     "error_starting_a_new_conversation_reason": "Error starting a new conversation: {{reason}}",
-    "no-agent-online": "Sorry, no online agents",
     "expand_chat": "Expand chat",
     "field_required": "Field required",
     "file_exceeds_allowed_size_of_size": "File exceeds allowed size of {{size}}.",
@@ -92,6 +91,8 @@
     "type_your_message_here": "Type your message here",
     "unread_messages_count_one": "{{count}} unread message",
     "unread_messages_count_other": "{{count}} unread messages",
+    "messages_count_one": "{{count}} message",
+    "messages_count_other": "{{count}} messages",
     "unread_messages": "unread messages",
     "user_added_by": "User added by",
     "user_joined": "User joined",
@@ -107,6 +108,8 @@
     "you_browser_doesn_t_support_video_element": "You browser doesn't support video element",
     "your_spot_is_spot": "Your spot is #{{spot}}",
     "your_spot_is_spot_estimated_wait_time_estimatedwai": "Your spot is #{{spot}} (Estimated wait time: {{estimatedWaitTime}})",
-    "user_picture":"User picture"
+    "user_picture":"User picture",
+    "no-agent-online": "Sorry, no online agents",
+    "error-too-many-requests": "Error, too many requests. Please slow down. You must wait {{seconds}} seconds before trying again."    
   }
 }

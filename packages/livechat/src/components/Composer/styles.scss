@@ -61,6 +61,8 @@ $composer-input-placeholder-color: $color-text-light;
 		font-weight: $composer-input-font-weight;
 		line-height: $composer-input-line-height;
 
+		outline: none !important;/*prevent from parent page*/
+
 		&:empty::before {
 			display: block; /* For Firefox */
 
