@@ -94,9 +94,9 @@ const ScreenHeader = ({
 			</Header.Content>
 			<Tooltip.Container>
 				<Header.Actions>
-					<Tooltip.Trigger content={notificationsEnabled ? t('sound_is_on') : t('sound_is_off')} placement='bottom-left'>
+					<Tooltip.Trigger content={notificationsEnabled == false ? t('sound_is_on') : t('sound_is_off')} placement='bottom-left'>
 						<Header.Action
-							aria-label={notificationsEnabled ? t('sound_is_on') : t('sound_is_off')}
+							aria-label={notificationsEnabled == false ? t('sound_is_on') : t('sound_is_off')}
 							onClick={notificationsEnabled ? onDisableNotifications : onEnableNotifications}
 						>
 							{notificationsEnabled ? (
