@@ -47,7 +47,7 @@ export class Avatar extends Component<AvatarProps, AvatarState> {
 				<img src={src} alt={description} className={createClassName(styles, 'avatar__image')} onError={this.handleError} />
 			)}
 
-			{status && <span className={createClassName(styles, 'avatar__status', { small, large, status })} />}
+			{status && <span role="status" aria-label={status ? t('status_'+ status) : null} className={createClassName(styles, 'avatar__status', { small, large, status })} />}
 		</div>
 	);
 }

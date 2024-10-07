@@ -111,6 +111,10 @@
     "user_picture":"User picture",
     "no-agent-online": "Sorry, no online agents",
     "error-too-many-requests": "Error, too many requests. Please slow down. You must wait {{seconds}} seconds before trying again.",
-    "action_button":"Action buttons"   
+    "action_button":"Action buttons",
+    "status_busy" : "Busy",
+    "status_online" : "Online",
+    "status_away" : "Away",
+    "status_offline": "Offline"
   }
 }

@@ -112,6 +112,10 @@
     "user_picture":"Zdjęcie użytkownika",
     "no-agent-online": "Przepraszamy, brak dostępnych agentów",
     "error-too-many-requests": "Błąd, zbyt wiele żądań. Proszę zwolnić. Musisz odczekać {{seconds}} sekund przed ponowną próbą tego punktu końcowego.",
-    "action_button":"Przyciski akcji"   
+    "action_button":"Przyciski akcji",
+    "status_busy" : "Zajęty",
+    "status_online" : "Dostępny",
+    "status_away" : "Nieobecny",
+    "status_offline": "Niedostępny"
   }
 }

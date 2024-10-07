@@ -219,7 +219,7 @@ export class MessageList extends MemoizedComponent {
 			style={style}
 			data-qa='message-list'
 		>
-			<ol className={createClassName(styles, 'message-list__content')}>{this.renderItems(this.props)}</ol>
+			<ol aria-live="polite" className={createClassName(styles, 'message-list__content')}>{this.renderItems(this.props)}</ol>
 		</div>
 	);
 }
