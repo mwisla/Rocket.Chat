@@ -110,6 +110,7 @@
     "your_spot_is_spot_estimated_wait_time_estimatedwai": "Your spot is #{{spot}} (Estimated wait time: {{estimatedWaitTime}})",
     "user_picture":"User picture",
     "no-agent-online": "Sorry, no online agents",
-    "error-too-many-requests": "Error, too many requests. Please slow down. You must wait {{seconds}} seconds before trying again."    
+    "error-too-many-requests": "Error, too many requests. Please slow down. You must wait {{seconds}} seconds before trying again.",
+    "action_button":"Action buttons"   
   }
 }

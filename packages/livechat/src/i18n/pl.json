@@ -20,6 +20,7 @@
     "conversation_finished": "Rozmowa zakończona",
     "count_new_messages_since_since_one": "Jedna nowa wiadomość od {{val, datetime}}",
     "count_new_messages_since_since_other": "{{count}} nowych wiadomości od {{val, datetime}}",
+    "count_new_messages_since_since": "{{count}} nowych wiadomości od {{val, datetime}}",
     "decline": "Anuluj",
     "department_switched": "Zmieniono dział",
     "departments": "Działy",
@@ -110,6 +111,7 @@
     "your_spot_is_spot_estimated_wait_time_estimatedwai": "Twoje miejsce to #{{spot}} (Szacowany czas oczekiwania: {{estimatedWaitTime}})",
     "user_picture":"Zdjęcie użytkownika",
     "no-agent-online": "Przepraszamy, brak dostępnych agentów",
-    "error-too-many-requests": "Błąd, zbyt wiele żądań. Proszę zwolnić. Musisz odczekać {{seconds}} sekund przed ponowną próbą tego punktu końcowego."
+    "error-too-many-requests": "Błąd, zbyt wiele żądań. Proszę zwolnić. Musisz odczekać {{seconds}} sekund przed ponowną próbą tego punktu końcowego.",
+    "action_button":"Przyciski akcji"   
   }
 }

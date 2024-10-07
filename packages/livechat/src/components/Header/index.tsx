@@ -5,6 +5,7 @@ import type { JSXInternal } from 'preact/src/jsx';
 import { type Theme } from '../../Theme';
 import { createClassName } from '../../helpers/createClassName';
 import styles from './styles.scss';
+import { t } from 'i18next';
 
 type HeaderProps = {
 	children?: ComponentChildren;
@@ -77,7 +78,7 @@ export const SubTitle = ({ children, className = undefined, ...props }: HeaderCo
 );
 
 export const Actions = ({ children, className = undefined, ...props }: HeaderComponentProps) => (
-	<nav className={createClassName(styles, 'header__actions', {}, [className])} {...props}>
+	<nav aria-label={t('action_button')} className={createClassName(styles, 'header__actions', {}, [className])} {...props}>
 		{children}
 	</nav>
 );
