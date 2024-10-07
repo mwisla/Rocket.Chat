@@ -112,6 +112,7 @@ export const Screen = ({ title, color, agent, children, className, unread, trigg
 			)}
 			<div 
 				role="dialog" 
+				aria-modal="true"
 				aria-labelledby="dialog-header"
 				aria-describedby="files-drop-target"
 				className={createClassName(styles, 'screen__inner', { fitTextSize: triggered }, [className])}>

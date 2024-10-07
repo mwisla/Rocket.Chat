@@ -60,7 +60,7 @@ const Alert = ({
 			<div className={createClassName(styles, 'alert__content')}>{children}</div>
 			{!hideCloseButton && (
 				<Tooltip.Container>
-					<Tooltip.Trigger content={t('dismiss_this_alert')} placement='bottom-left'>
+					<Tooltip.Trigger content={t('dismiss_this_alert')} placement='bottom-left' ariaHidden={true}>
 						<button onClick={handleDismiss} className={createClassName(styles, 'alert__close')} aria-label={t('dismiss_this_alert')}>
 							<CloseIcon width={20} height={20} />
 						</button>

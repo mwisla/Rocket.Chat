@@ -53,14 +53,14 @@ export class TooltipContainer extends Component {
 		tooltip: null,
 		activeChild: null,
 		event: null,
-		placement: null,
+		placement: null
 	};
 
-	showTooltip = (event, { content, placement = 'bottom', childIndex }) => {
+	showTooltip = (event, { content, placement = 'bottom', childIndex, ariaHidden = false }) => {
 		const triggerBounds = event.target.getBoundingClientRect();
 		this.setState({
 			tooltip: (
-				<Tooltip floating placement={placement} triggerBounds={triggerBounds}>
+				<Tooltip aria-hidden={ariaHidden} floating placement={placement} triggerBounds={triggerBounds}>
 					{content}
 				</Tooltip>
 			),
@@ -98,14 +98,14 @@ export class TooltipContainer extends Component {
 	}
 }
 
-export const TooltipTrigger = ({ children, content, placement = '' }) => (
+export const TooltipTrigger = ({ children, content, placement = '', ariaHidden = false }) => (
 	<TooltipContext.Consumer>
 		{({ showTooltip, hideTooltip }) =>
 			toChildArray(children).map((child, index) =>
 				cloneElement(child, {
-					onMouseEnter: (event) => showTooltip(event, { content, placement, childIndex: index }),
+					onMouseEnter: (event) => showTooltip(event, { content, placement, childIndex: index, ariaHidden }),
 					onMouseLeave: (event) => hideTooltip(event),
-					onFocusCapture: (event) => showTooltip(event, { content, placement, childIndex: index }),
+					onFocusCapture: (event) => showTooltip(event, { content, placement, childIndex: index, ariaHidden }),
 					onBlurCapture: (event) => hideTooltip(event),
 					content,
 				}),
