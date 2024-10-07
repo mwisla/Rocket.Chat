@@ -54,37 +54,45 @@ export class Modal extends Component {
 				onMouseDown={this.handleMouseDown}
 				className={createClassName(styles, 'modal__overlay')}
 			>
-				<div className={createClassName(styles, 'modal', { animated })} {...props}>
+				<div role="dialog" aria-describedby="dialog-msg" aria-labelledby="dialog-title" className={createClassName(styles, 'modal', { animated })} {...props}>
 					{children}
 				</div>
 			</div>
 		) : null;
 }
 
-export const ModalMessage = ({ children }) => <div className={createClassName(styles, 'modal__message')}>{children}</div>;
+export const ModalMessage = ({ children }) => <div id="dialog-title" className={createClassName(styles, 'modal__message')}>{children}</div>;
 
 export const ConfirmationModal = withTranslation()(({ text, confirmButtonText, cancelButtonText, onConfirm, onCancel, t, ...props }) => (
 	<Modal open animated dismissByOverlay={false} {...props}>
 		<Modal.Message>{text}</Modal.Message>
-		<ButtonGroup>
-			<Button outline secondary onClick={onCancel}>
-				{cancelButtonText || t('no')}
-			</Button>
-			<Button secondaryDanger onClick={onConfirm}>
-				{confirmButtonText || t('yes')}
-			</Button>
-		</ButtonGroup>
+		<div id="dialog-msg">
+      		<div role="document">
+				<ButtonGroup>
+					<Button outline secondary onClick={onCancel}>
+						{cancelButtonText || t('no')}
+					</Button>
+					<Button secondaryDanger onClick={onConfirm}>
+						{confirmButtonText || t('yes')}
+					</Button>
+				</ButtonGroup>
+			</div>
+		</div>
 	</Modal>
 ));
 
 export const AlertModal = withTranslation()(({ text, buttonText, onConfirm, t, ...props }) => (
 	<Modal open animated dismissByOverlay={false} {...props}>
 		<Modal.Message>{text}</Modal.Message>
-		<ButtonGroup>
-			<Button secondary onClick={onConfirm}>
-				{buttonText || t('ok')}
-			</Button>
-		</ButtonGroup>
+		<div id="dialog-msg">
+      		<div role="document">
+				<ButtonGroup>
+					<Button secondary onClick={onConfirm}>
+						{buttonText || t('ok')}
+					</Button>
+				</ButtonGroup>
+			</div>
+		</div>
 	</Modal>
 ));
 
