@@ -19,7 +19,7 @@ export const MessageText = memo(({ text, system, className, style = {} }: Messag
 	if (system === true) {
 		return (
 			<div aria-live="polite" aria-label={text} className={createClassName(styles, 'message-text', { system, bigEmoji }, [className])} style={style}>
-				<h4>{shortnameToUnicode(text)}</h4>
+				<h2>{shortnameToUnicode(text)}</h2>
 			</div>
 		);
 	}
