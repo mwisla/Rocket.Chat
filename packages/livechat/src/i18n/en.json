@@ -115,6 +115,7 @@
     "status_busy" : "Busy",
     "status_online" : "Online",
     "status_away" : "Away",
-    "status_offline": "Offline"
+    "status_offline": "Offline",
+    "message_sended" : "Your message has been sent"
   }
 }

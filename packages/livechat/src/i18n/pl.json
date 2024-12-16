@@ -116,6 +116,7 @@
     "status_busy" : "Zajęty",
     "status_online" : "Dostępny",
     "status_away" : "Nieobecny",
-    "status_offline": "Niedostępny"
+    "status_offline": "Niedostępny",
+    "message_sended" : "Twoja wiadomość została wysłana"
   }
 }

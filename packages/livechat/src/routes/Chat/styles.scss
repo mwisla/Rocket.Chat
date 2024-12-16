@@ -65,6 +65,13 @@
 			color: black;
 		}
 	}
+
+	.send-status{
+		position: absolute;
+		left :-999em;
+		width : 100em;
+		overflow : hidden;
+	}
 }
 
 @keyframes loader-rotate {

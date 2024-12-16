@@ -34,6 +34,7 @@ class Chat extends Component {
 		atBottom: true,
 		text: '',
 		emojiPickerActive: false,
+		sendMessage: false
 	};
 
 	inputRef = createRef(null);
@@ -77,6 +78,7 @@ class Chat extends Component {
 			this.props.onSubmit(text);
 			this.setState({ text: '' });
 			this.turnOffEmojiPicker();
+			this.setState({ sendMessage: true });
 		}
 	};
 
@@ -88,6 +90,7 @@ class Chat extends Component {
 		}
 		this.setState({ text: value });
 		onChangeText && onChangeText(value);
+		this.setState({ sendMessage: false });
 	};
 
 	toggleEmojiPickerState = () => {
@@ -246,7 +249,10 @@ class Chat extends Component {
 										<ComposerAction onClick={this.handleSendClick} title={t("send")}>
 										<SendIcon width={20} height={20} />
 									</ComposerAction>
-									)}
+									)}									
+									<span role="status" aria-live="assertive" aria-atomic="true" className={createClassName(styles, 'send-status')}>
+										{this.state.sendMessage ? t("message_sended") : null}
+									</span>
 								</ComposerActions>
 							}
 							limitTextLength={limitTextLength}
