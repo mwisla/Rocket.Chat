@@ -5,16 +5,22 @@ import { createClassName } from '../../helpers/createClassName';
 import { Button } from '../Button';
 import { ButtonGroup } from '../ButtonGroup';
 import styles from './styles.scss';
+import { createRef } from 'preact';
+import { trapFocusRef } from '../../helpers/trapFocus';
 
 export class Modal extends Component {
 	static defaultProps = {
 		dismissByOverlay: true,
 	};
 
-	handleKeyDown = ({ key }) => {
-		if (key === 'Escape') {
+	modalref = createRef();
+
+	handleKeyDown = (e) => {
+		if (e.key === 'Escape') {
 			this.triggerDismiss();
-		}
+			return false;
+		}		
+		return trapFocusRef(e, this.modalref?.current, 0);
 	};
 
 	handleTouchStart = () => {
@@ -49,6 +55,7 @@ export class Modal extends Component {
 	render = ({ children, animated, open, ...props }) =>
 		open ? (
 			<div
+				ref={this.modalref}
 				data-qa-type='modal-overlay'
 				onTouchStart={this.handleTouchStart}
 				onMouseDown={this.handleMouseDown}
