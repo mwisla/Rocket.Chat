@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { ButtonGroup } from '../ButtonGroup';
 import styles from './styles.scss';
 import { createRef } from 'preact';
-import { trapFocusRef } from '../../helpers/trapFocus';
+import { trapFocus, setFocusOnFirst } from '../../helpers/trapFocus';
 
 export class Modal extends Component {
 	static defaultProps = {
@@ -18,9 +18,11 @@ export class Modal extends Component {
 	handleKeyDown = (e) => {
 		if (e.key === 'Escape') {
 			this.triggerDismiss();
+			e.preventDefault(); 
+			e.stopPropagation();
 			return false;
 		}		
-		return trapFocusRef(e, this.modalref?.current, 0);
+		return trapFocus(e, this.modalref?.current, 0);
 	};
 
 	handleTouchStart = () => {
@@ -40,16 +42,18 @@ export class Modal extends Component {
 
 	componentDidMount() {
 		this.mounted = true;
-		window.addEventListener('keydown', this.handleKeyDown, false);
+		this.modalref.current.addEventListener('keydown', this.handleKeyDown, false);
 		const { timeout } = this.props;
 		if (Number.isFinite(timeout) && timeout > 0) {
 			setTimeout(() => this.triggerDismiss(), timeout);
 		}
+
+		setFocusOnFirst(this.modalref.current);
 	}
 
 	componentWillUnmount() {
 		this.mounted = false;
-		window.removeEventListener('keydown', this.handleKeyDown, false);
+		this.modalref.current.removeEventListener('keydown', this.handleKeyDown, false);
 	}
 
 	render = ({ children, animated, open, ...props }) =>
@@ -71,7 +75,7 @@ export class Modal extends Component {
 export const ModalMessage = ({ children }) => <div id="dialog-title" className={createClassName(styles, 'modal__message')}>{children}</div>;
 
 export const ConfirmationModal = withTranslation()(({ text, confirmButtonText, cancelButtonText, onConfirm, onCancel, t, ...props }) => (
-	<Modal open animated dismissByOverlay={false} {...props}>
+	<Modal open animated dismissByOverlay={false} {...props} onDismiss={onCancel}>
 		<Modal.Message>{text}</Modal.Message>
 		<div id="dialog-msg">
       		<div role="document">

@@ -5,7 +5,7 @@ import { createClassName } from '../../helpers/createClassName';
 import { normalizeDOMRect } from '../../helpers/normalizeDOMRect';
 import { PopoverTrigger } from '../Popover';
 import styles from './styles.scss';
-import { trapFocusRef } from '../../helpers/trapFocus';
+import { trapFocus, setFocusOnFirst } from '../../helpers/trapFocus';
 
 type MenuProps = {
 	hidden?: boolean;
@@ -103,15 +103,24 @@ class PopoverMenuWrapper extends Component<PopoverMenuWrapperProps, PopoverMenuW
 			placement,
 		});
 
-		window.addEventListener("keydown", this.initTrapFocus, false);
+		(this.menuRef?.base as HTMLElement)?.addEventListener("keydown", this.initTrapFocus, false);
+
+		setFocusOnFirst(this.menuRef?.base as HTMLElement);
 	};
 
 	componentWillUnmount() {
-		window.removeEventListener("keydown", this.initTrapFocus, false);
+		(this.menuRef?.base as HTMLElement)?.removeEventListener("keydown", this.initTrapFocus, false);
 	};
 
 	initTrapFocus = (e: KeyboardEvent) => {
-		return trapFocusRef(e, this.menuRef?.base as HTMLElement, 0);
+		if (e.key === 'Escape') {		
+			const { dismiss } = this.props;
+			dismiss();
+			e.preventDefault();
+			e.stopPropagation();
+			return false;
+		}	
+		return trapFocus(e, this.menuRef?.base as HTMLElement, 0);
 	};
 
 	render = ({ children }: PopoverMenuWrapperProps) => (

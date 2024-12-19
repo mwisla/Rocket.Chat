@@ -1,24 +1,24 @@
+const focusableElements = 'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
 
 function isVisible(el: HTMLElement): boolean {
     return !!(el && (el.offsetWidth || el.offsetHeight || (el.getClientRects && el.getClientRects().length)));
 };
 
-export function trapFocus(e: KeyboardEvent, elId: string, minFocuseItems: number = 2) {
-    const el = document.getElementById(elId);
+export function trapFocusById(e: KeyboardEvent, containerId: string, minFocuseItems: number = 2) {
+    const el = document.getElementById(containerId);
     if (!el) {
         return;
     }
-    trapFocusRef(e, el, minFocuseItems);
+    trapFocus(e, el, minFocuseItems);
 };
 
-export function trapFocusRef(e: KeyboardEvent, el: HTMLElement, minFocuseItems: number = 2) {
+export function trapFocus(e: KeyboardEvent, container: HTMLElement, minFocuseItems: number = 2) {
     const isTabPressed = e.key === 'Tab' || e.keyCode === 9 || e.code === 'Tab';
 
     if (!isTabPressed) {
         return;
     }
-    const focusableElements = 'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
-    const focusableContent = Array.prototype.slice.call(el.querySelectorAll(focusableElements));
+    const focusableContent = Array.prototype.slice.call(container.querySelectorAll(focusableElements));
 
     if (focusableContent.filter(e => isVisible(e as HTMLElement)).length < minFocuseItems) {
         return;
@@ -36,4 +36,19 @@ export function trapFocusRef(e: KeyboardEvent, el: HTMLElement, minFocuseItems: 
         firstFocusableElement.focus();
         e.preventDefault();
     }
+};
+
+export function setFocusOnFirst(el: HTMLElement, timeout: number = 50) {
+    const doFocus = () => {
+        const focusableContent = Array.prototype.slice.call(el.querySelectorAll(focusableElements));
+        const firstFocusableElement = <HTMLElement>focusableContent[0];
+        firstFocusableElement.focus();
+    };
+    if (el) {
+        doFocus();
+    }
+    else {
+        setTimeout(doFocus, timeout);
+    }
+
 }
