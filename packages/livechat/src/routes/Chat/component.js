@@ -192,26 +192,32 @@ class Chat extends Component {
 				</Screen.Content>
 				<Screen.Footer
 					options={
-						options && !registrationRequired ? (
-							<FooterOptions>
-								<Menu.Group>
-									{onChangeDepartment && (
-										<Menu.Item onClick={onChangeDepartment} icon={ChangeIcon}>
-											{t('change_department')}
-										</Menu.Item>
-									)}
-									{onRemoveUserData && (
-										<Menu.Item onClick={onRemoveUserData} icon={RemoveIcon}>
-											{t('forget_remove_my_data')}
-										</Menu.Item>
-									)}
-									{onFinishChat && (
-										<Menu.Item danger onClick={onFinishChat} icon={FinishIcon}>
-											{t('finish_this_chat')}
-										</Menu.Item>
-									)}
-								</Menu.Group>
-							</FooterOptions>
+						options && !registrationRequired && onFinishChat ? (
+
+							<button className={createClassName(styles, 'options')} onClick={onFinishChat} onMouseUp={(e) => e?.target?.blur()}>
+								{t('finish_this_chat')}
+							</button>
+
+
+							// <FooterOptions>
+							// 	<Menu.Group>
+							// 		{onChangeDepartment && (
+							// 			<Menu.Item onClick={onChangeDepartment} icon={ChangeIcon}>
+							// 				{t('change_department')}
+							// 			</Menu.Item>
+							// 		)}
+							// 		{onRemoveUserData && (
+							// 			<Menu.Item onClick={onRemoveUserData} icon={RemoveIcon}>
+							// 				{t('forget_remove_my_data')}
+							// 			</Menu.Item>
+							// 		)}
+							// 		{onFinishChat && (
+							// 			<Menu.Item danger onClick={onFinishChat} icon={FinishIcon}>
+							// 				{t('finish_this_chat')}
+							// 			</Menu.Item>
+							// 		)}
+							// 	</Menu.Group>
+							// </FooterOptions>
 						) : null
 					}
 					limit={limitTextLength ? <CharCounter limitTextLength={limitTextLength} textLength={text.length} /> : null}
@@ -247,9 +253,9 @@ class Chat extends Component {
 									)}
 									{(text.length > 0 || true) && (
 										<ComposerAction onClick={this.handleSendClick} title={t("send")}>
-										<SendIcon width={20} height={20} />
-									</ComposerAction>
-									)}									
+											<SendIcon width={20} height={20} />
+										</ComposerAction>
+									)}
 									<span role="status" aria-live="assertive" aria-atomic="true" className={createClassName(styles, 'send-status')}>
 										{this.state.sendMessage ? t("message_sended") : null}
 									</span>

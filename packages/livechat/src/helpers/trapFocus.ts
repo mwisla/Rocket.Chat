@@ -5,11 +5,11 @@ function isVisible(el: HTMLElement): boolean {
 };
 
 export function trapFocusById(e: KeyboardEvent, containerId: string, minFocuseItems: number = 2) {
-    const el = document.getElementById(containerId);
-    if (!el) {
+    const container = document.getElementById(containerId);
+    if (!container) {
         return;
     }
-    trapFocus(e, el, minFocuseItems);
+    trapFocus(e, container, minFocuseItems);
 };
 
 export function trapFocus(e: KeyboardEvent, container: HTMLElement, minFocuseItems: number = 2) {
@@ -38,17 +38,43 @@ export function trapFocus(e: KeyboardEvent, container: HTMLElement, minFocuseIte
     }
 };
 
+export function setFocusOnFirstById(containerId: string, timeout: number = 50) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+        return;
+    }
+    setFocusOnFirst(container, timeout);
+};
+
 export function setFocusOnFirst(el: HTMLElement, timeout: number = 50) {
     const doFocus = () => {
         const focusableContent = Array.prototype.slice.call(el.querySelectorAll(focusableElements));
         const firstFocusableElement = <HTMLElement>focusableContent[0];
         firstFocusableElement.focus();
     };
-    if (el) {
-        doFocus();
-    }
-    else {
-        setTimeout(doFocus, timeout);
-    }
+    setTimeout(doFocus, timeout);
+};
 
-}
+export function setFocusOnMessage() {
+    //fix autofocus
+    setTimeout(() => {
+
+        const p = document.querySelectorAll('[contenteditable="true"]')[0] as any;
+        if (p) {
+            p.focus();
+
+            if (p.hasChildNodes()) {
+                const s = window.getSelection();
+                const r = document.createRange();
+                const e = p.childElementCount > 0 ? p.lastChild : p;
+                r.setStart(e, 1);
+                r.setEnd(e, 1);
+                if (s) {
+                    s.removeAllRanges();
+                    s.addRange(r);
+                }
+            }
+        }
+
+    }, 50);
+};

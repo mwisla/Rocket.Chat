@@ -1,4 +1,5 @@
 import type { ComponentChildren } from 'preact';
+import { useRef, useEffect } from 'preact/hooks';
 import type { CSSProperties } from 'preact/compat';
 import type { JSXInternal } from 'preact/src/jsx';
 import { useTranslation } from 'react-i18next';
@@ -31,6 +32,7 @@ type ButtonProps = {
 	onMouseUp?: JSXInternal.MouseEventHandler<HTMLButtonElement>;
 	full?: boolean;
 	label?: string;
+	autofocus?: boolean;
 };
 
 export const Button = ({
@@ -53,11 +55,23 @@ export const Button = ({
 	img,
 	full,
 	label,
+	autofocus,
 	...props
 }: ButtonProps) => {
+
 	const { t } = useTranslation();
+
+	const buttonRef = useRef<HTMLButtonElement>(null);
+
+	useEffect(() => {
+		if (buttonRef.current && autofocus) {
+			buttonRef.current.focus();
+		}
+	}, []);
+
 	return (
 		<button
+			ref={buttonRef}
 			type={submit ? 'submit' : 'button'}
 			form={form}
 			disabled={disabled}

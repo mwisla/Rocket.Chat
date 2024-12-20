@@ -7,6 +7,7 @@ import { isActiveSession } from '../../helpers/isActiveSession';
 import { parentCall } from '../../lib/parentCall';
 import Triggers from '../../lib/triggers';
 import { StoreContext } from '../../store';
+import { setFocusOnFirstById, setFocusOnMessage } from '../../helpers/trapFocus';
 
 export type ScreenContextValue = {
 	hideWatermark: boolean;
@@ -125,28 +126,11 @@ export const ScreenProvider: FunctionalComponent = ({ children }) => {
 		}
 
 		Triggers.callbacks?.emit('chat-opened-by-visitor');
-
-		//fix autofocus
-		setTimeout(() => {
-
-			const p = document.querySelectorAll('[contenteditable="true"]')[0] as any;
-			if (p) {
-				p.focus();
-
-				if (p.hasChildNodes()) {
-					const s = window.getSelection();
-					const r = document.createRange();
-					const e = p.childElementCount > 0 ? p.lastChild : p;
-					r.setStart(e, 1);
-					r.setEnd(e, 1);
-					if (s) {
-						s.removeAllRanges();
-						s.addRange(r);
-					}
-				}
-			}
-
-		}, 50);
+		
+		setFocusOnFirstById("leaveMessage");
+		setFocusOnFirstById("register");
+		setFocusOnMessage();
+		
 	};
 
 	const handleOpenWindow = () => {

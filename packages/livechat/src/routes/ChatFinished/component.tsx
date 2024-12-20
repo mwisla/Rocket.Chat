@@ -31,7 +31,7 @@ const ChatFinished = ({ title, greeting, message, onRedirectChat, t }: ChatFinis
 				<p className={createClassName(styles, 'chat-finished__message')}>{message || defaultMessage}</p>
 
 				<ButtonGroup>
-					<Button onClick={handleClick} stack>
+					<Button onClick={handleClick} stack autofocus>
 						{t('new_chat')}
 					</Button>
 				</ButtonGroup>

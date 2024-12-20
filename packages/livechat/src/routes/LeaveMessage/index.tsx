@@ -1,5 +1,5 @@
 import type { FunctionalComponent } from 'preact';
-import { useContext, useRef } from 'preact/hooks';
+import { useContext, useRef, useEffect } from 'preact/hooks';
 import type { JSXInternal } from 'preact/src/jsx';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
@@ -21,6 +21,7 @@ import { parentCall } from '../../lib/parentCall';
 import { createToken } from '../../lib/random';
 import { StoreContext } from '../../store';
 import styles from './styles.scss';
+import { setFocusOnFirstById } from '../../helpers/trapFocus';
 
 const LeaveMessage: FunctionalComponent<{ path: string }> = () => {
 	const {
@@ -179,3 +180,4 @@ const LeaveMessage: FunctionalComponent<{ path: string }> = () => {
 };
 
 export default LeaveMessage;
+

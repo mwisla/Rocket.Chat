@@ -20,6 +20,7 @@ import Triggers from '../../lib/triggers';
 import { StoreContext } from '../../store';
 import type { StoreState } from '../../store';
 import styles from './styles.scss';
+import { setFocusOnFirstById } from '../../helpers/trapFocus';
 
 // Custom field as in the form payload
 type FormPayloadCustomField = { [key: string]: string };

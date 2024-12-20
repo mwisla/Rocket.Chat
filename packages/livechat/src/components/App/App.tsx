@@ -24,6 +24,7 @@ import SwitchDepartment from '../../routes/SwitchDepartment';
 import TriggerMessage from '../../routes/TriggerMessage';
 import type { Dispatch, StoreState } from '../../store';
 import { ScreenProvider } from '../Screen/ScreenProvider';
+import { setFocusOnMessage } from '../../helpers/trapFocus';
 
 type AppProps = {
 	config: {
@@ -110,6 +111,10 @@ export class App extends Component<AppProps, AppState> {
 
 			if (url === '/' && showRegistrationForm) {
 				return route('/register');
+			}
+
+			if (url === '/') {
+				setFocusOnMessage();
 			}
 		}, 100);
 	};
