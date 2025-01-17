@@ -110,7 +110,7 @@ export const processIncomingCallMessage = async (message) => {
 
 const processMessage = async (message) => {
 	
-	console.log(message.t, new Date().toTimeString(), message);
+	//console.log(message.t, new Date().toTimeString(), message);
 
 	if (message.t === 'livechat-close') {
 		await closeChat(message);
@@ -235,7 +235,7 @@ export const onUserActivity = (username, activities) => {
 };
 
 export const onMessage = async (originalMessage) => {
-	//let message = JSON.parse(JSON.stringify(originalMessage));
+	let message = JSON.parse(JSON.stringify(originalMessage));
 
 	if (message.ts instanceof Date) {
 		message.ts = message.ts.toISOString();
