@@ -116,6 +116,7 @@
     "status_online" : "Online",
     "status_away" : "Away",
     "status_offline": "Offline",
-    "message_sended" : "Your message has been sent"
+    "message_sended" : "Your message has been sent",
+    "session_ending_at" : "Session will end at {{time}}, send message to extend."
   }
 }

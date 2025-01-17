@@ -117,6 +117,7 @@
     "status_online" : "Dostępny",
     "status_away" : "Nieobecny",
     "status_offline": "Niedostępny",
-    "message_sended" : "Twoja wiadomość została wysłana"
+    "message_sended" : "Twoja wiadomość została wysłana",
+    "session_ending_at" : "Sesja zakończy się o {{time}}, wyślij wiadomość aby przedłużyć."
   }
 }

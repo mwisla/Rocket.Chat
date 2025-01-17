@@ -17,6 +17,8 @@ import { normalizeMessage, normalizeMessages } from './threads';
 import { handleTranscript } from './transcript';
 import Triggers from './triggers';
 
+const { livechatSessionEndingAlertId } = constants;
+
 const commands = new Commands();
 
 export const closeChat = async ({ transcriptRequested } = {}) => {
@@ -107,8 +109,16 @@ export const processIncomingCallMessage = async (message) => {
 };
 
 const processMessage = async (message) => {
+	
+	console.log(message.t, new Date().toTimeString(), message);
+
 	if (message.t === 'livechat-close') {
 		await closeChat(message);
+	} else if (message.t === 'omnichannel_placed_chat_on_hold') {
+		await clearSessionEndingAlerts();
+		await displaySessionEndingAlert(message.timeout);
+	} else if (message.t === 'omnichannel_on_hold_chat_resumed') {
+		clearSessionEndingAlerts();
 	} else if (message.t === 'command') {
 		commands[message.msg] && commands[message.msg]();
 	} else if (message.webRtcCallEndTs) {
@@ -116,6 +126,18 @@ const processMessage = async (message) => {
 	} else if (isVideoCallMessage(message)) {
 		await processIncomingCallMessage(message);
 	}
+};
+
+const clearSessionEndingAlerts = async () => {
+	const { alerts } = store.state;
+	await store.setState({ alerts: alerts.filter((alert) => ![livechatSessionEndingAlertId].includes(alert.id)) });
+};
+
+const displaySessionEndingAlert = async (timeout) => {
+	const timeoutMs = timeout * 1000;
+	const alert = { id: livechatSessionEndingAlertId, children: i18next.t('session_ending_at', { time: new Date(new Date().getTime() + timeoutMs).toLocaleTimeString()}), warning: true, timeout: timeoutMs, hideCloseButton: true }
+	const { alerts } = store.state;
+	await store.setState({ alerts: (alerts.push(alert), alerts) });
 };
 
 const doPlaySound = async (message) => {
@@ -213,7 +235,7 @@ export const onUserActivity = (username, activities) => {
 };
 
 export const onMessage = async (originalMessage) => {
-	let message = JSON.parse(JSON.stringify(originalMessage));
+	//let message = JSON.parse(JSON.stringify(originalMessage));
 
 	if (message.ts instanceof Date) {
 		message.ts = message.ts.toISOString();
