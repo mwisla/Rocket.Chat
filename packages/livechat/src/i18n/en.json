@@ -118,6 +118,7 @@
     "status_offline": "Offline",
     "message_sended" : "Your message has been sent",
     "session_ending_at" : "Session will end in {{time}} seconds, send message to extend.",
-    "session_extend":"Extend session"
+    "session_extend":"Extend session",
+    "avatar_description": "{{name}} avatar"
   }
 }

@@ -119,6 +119,7 @@
     "status_offline": "Niedostępny",
     "message_sended" : "Twoja wiadomość została wysłana",
     "session_ending_at" : "Sesja zakończy się za {{time}} sekund, wyślij wiadomość aby przedłużyć.",
-    "session_extend":"Przedłuż sesję"
+    "session_extend":"Przedłuż sesję",
+    "avatar_description": "{{name}} awatar"
   }
 }

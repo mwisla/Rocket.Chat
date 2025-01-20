@@ -42,7 +42,8 @@ $avatar-status-indicator-size-large: 14px;
 		width: $avatar-status-indicator-size-medium;
 		height: $avatar-status-indicator-size-medium;
 
-		border: 2px solid var(--color, transparent);
+		// border: 2px solid var(--color, transparent);
+		border: 2px solid $bg-color-white;
 		border-radius: 50%;
 		background-color: $bg-color-grey;
 

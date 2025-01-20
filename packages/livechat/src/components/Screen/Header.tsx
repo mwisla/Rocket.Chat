@@ -85,7 +85,7 @@ const ScreenHeader = ({
 		>
 			{agent?.avatar && (
 				<Header.Picture>
-					<Avatar src={agent.avatar.src} description={agent.avatar.description} status={agent.status} large={largeHeader()} t={t} />
+					<Avatar src={agent.avatar.src} description={agent?.name ??gent.avatar.description} status={agent.status} large={largeHeader()} t={t} />
 				</Header.Picture>
 			)}
 
