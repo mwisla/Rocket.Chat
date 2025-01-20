@@ -1,4 +1,4 @@
-import type { ComponentChildren } from 'preact';
+import { createRef, type ComponentChildren } from 'preact';
 import { useCallback, useEffect } from 'preact/hooks';
 import type { JSXInternal } from 'preact/src/jsx';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +20,8 @@ type AlertProps = {
 	style?: JSXInternal.CSSProperties;
 	children?: ComponentChildren;
 	timeout?: number;
+	sessionExtension?: boolean;
+	sendMessage?: (msg: string) => void;
 };
 
 const Alert = ({
@@ -34,11 +36,17 @@ const Alert = ({
 	style = {},
 	children,
 	timeout = 3000,
+	sessionExtension,
+	sendMessage
 }: AlertProps) => {
 	const { t } = useTranslation();
 	const handleDismiss = useCallback(() => {
 		onDismiss?.(id);
 	}, [id, onDismiss]);
+
+	const handleSendMessage = useCallback(() => {
+		sendMessage?.(t('session_extend'));
+	}, [sendMessage]);
 
 	useEffect(() => {
 		let dismissTimeout: ReturnType<typeof setTimeout> | undefined;
@@ -47,6 +55,14 @@ const Alert = ({
 		}
 		return () => clearTimeout(dismissTimeout);
 	}, [handleDismiss, timeout]);
+
+	const sessionExtensionRef = createRef();
+
+	useEffect(() => {
+		if (sessionExtension === true && sessionExtensionRef != null) {
+			sessionExtensionRef?.current?.focus();
+		}
+	}, [id, sessionExtension]);
 
 	return (
 		<div
@@ -66,6 +82,9 @@ const Alert = ({
 						</button>
 					</Tooltip.Trigger></Tooltip.Container>
 			)}
+			{sessionExtension && (<button ref={sessionExtensionRef} onClick={handleSendMessage} className={createClassName(styles, 'alert__close')} aria-label={t('session_extend')}>
+				{t('session_extend')}
+			</button>)}
 		</div>
 	);
 };

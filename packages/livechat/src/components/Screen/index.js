@@ -69,7 +69,7 @@ const CssVar = ({ theme }) => {
 };
 
 /** @type {{ (props: any) => JSX.Element; Content: (props: any) => JSX.Element; Footer: (props: any) => JSX.Element }} */
-export const Screen = ({ title, color, agent, children, className, unread, triggered = false, queueInfo, onSoundStop }) => {
+export const Screen = ({ title, color, agent, children, className, unread, triggered = false, queueInfo, onSoundStop, onSubmit }) => {
 	const {
 		theme = {},
 		livechatLogo,
@@ -133,6 +133,7 @@ export const Screen = ({ title, color, agent, children, className, unread, trigg
 							onRestore={onRestore}
 							onOpenWindow={onOpenWindow}
 							queueInfo={queueInfo}
+							sendMessage={onSubmit}
 						/>
 					)}
 

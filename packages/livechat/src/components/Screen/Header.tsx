@@ -30,6 +30,7 @@ type screenHeaderProps = {
 		spot: number;
 	};
 	title: string;
+	sendMessage: (msg: string) => unknown;
 };
 
 const ScreenHeader = ({
@@ -47,6 +48,7 @@ const ScreenHeader = ({
 	onOpenWindow,
 	queueInfo,
 	title,
+	sendMessage
 }: screenHeaderProps) => {
 	const { t } = useTranslation();
 	const headerRef = useRef<HTMLElement>(null);
@@ -73,7 +75,7 @@ const ScreenHeader = ({
 			post={
 				<Header.Post>
 					{alerts?.map((alert) => (
-						<Alert {...alert} onDismiss={onDismissAlert}>
+						<Alert {...alert} onDismiss={onDismissAlert} sendMessage={sendMessage}>
 							{alert.children}
 						</Alert>
 					))}

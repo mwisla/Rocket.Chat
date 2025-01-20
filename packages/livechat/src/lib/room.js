@@ -109,7 +109,7 @@ export const processIncomingCallMessage = async (message) => {
 };
 
 const processMessage = async (message) => {
-	
+
 	//console.log(message.t, new Date().toTimeString(), message);
 
 	if (message.t === 'livechat-close') {
@@ -129,15 +129,41 @@ const processMessage = async (message) => {
 };
 
 const clearSessionEndingAlerts = async () => {
+	if (displaySessionEndingAlertInterval) {
+		clearInterval(displaySessionEndingAlertInterval);
+	}
+	if (displaySessionEndingAlertTimeout) {
+		clearTimeout(displaySessionEndingAlertTimeout);
+	}
 	const { alerts } = store.state;
 	await store.setState({ alerts: alerts.filter((alert) => ![livechatSessionEndingAlertId].includes(alert.id)) });
 };
 
+
+let displaySessionEndingAlertTimeout;
+let displaySessionEndingAlertInterval;
 const displaySessionEndingAlert = async (timeout) => {
 	const timeoutMs = timeout * 1000;
-	const alert = { id: livechatSessionEndingAlertId, children: i18next.t('session_ending_at', { time: new Date(new Date().getTime() + timeoutMs).toLocaleTimeString()}), warning: true, timeout: timeoutMs, hideCloseButton: true }
-	const { alerts } = store.state;
-	await store.setState({ alerts: (alerts.push(alert), alerts) });
+	const timezone = new Date().getTimezoneOffset() * 60 * 1000;
+	const dateEnd = new Date(new Date().getTime() + timeoutMs);
+	const showBefore = 30 * 1000;//30s
+	const alertTomeut = timeoutMs > showBefore ? timeoutMs - showBefore : 0;
+	displaySessionEndingAlertTimeout = setTimeout(async () => {
+		const alert = { id: livechatSessionEndingAlertId, children: i18next.t('session_ending_at', { time: Math.round(new Date(dateEnd.getTime() - new Date().getTime()).getTime()/1000) }), warning: true, timeout: timeoutMs, hideCloseButton: true, sessionExtension: true }
+		const { alerts } = store.state;
+		await store.setState({ alerts: (alerts.push(alert), alerts) });
+		displaySessionEndingAlertInterval = setInterval(async () => {
+			const endIn = new Date(dateEnd.getTime() - new Date().getTime());
+			if (endIn.getTime() > 0) {
+				alerts.forEach((a) => {
+					if (a.id === livechatSessionEndingAlertId) {
+						a.children = i18next.t('session_ending_at', { time: Math.round(endIn.getTime()/1000) });
+					}
+				});
+				await store.setState({ alerts: alerts });
+			}
+		}, 1000);
+	}, alertTomeut)
 };
 
 const doPlaySound = async (message) => {
