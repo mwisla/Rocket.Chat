@@ -82,7 +82,7 @@ const Alert = ({
 						</button>
 					</Tooltip.Trigger></Tooltip.Container>
 			)}
-			{sessionExtension && (<button ref={sessionExtensionRef} onClick={handleSendMessage} className={createClassName(styles, 'alert__close')} aria-label={t('session_extend')}>
+			{sessionExtension && (<button ref={sessionExtensionRef} onClick={handleSendMessage} className={createClassName(styles, 'alert__close')}>
 				{t('session_extend')}
 			</button>)}
 		</div>
