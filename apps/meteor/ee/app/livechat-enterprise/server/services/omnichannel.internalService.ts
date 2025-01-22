@@ -42,6 +42,7 @@ export class OmnichannelEE extends ServiceClassInternal implements IOmnichannelE
 			throw new Error('error-room-is-already-on-hold');
 		}
 		const restrictedOnHold = settings.get('Livechat_allow_manual_on_hold_upon_agent_engagement_only');
+		const timeout = settings.get('Livechat_auto_close_on_hold_chats_timeout');
 		const canRoomBePlacedOnHold = !room.onHold;
 		const canAgentPlaceOnHold = !room.lastMessage?.token;
 		const canPlaceChatOnHold = canRoomBePlacedOnHold && (!restrictedOnHold || canAgentPlaceOnHold);
@@ -55,7 +56,7 @@ export class OmnichannelEE extends ServiceClassInternal implements IOmnichannelE
 		await Promise.all([
 			LivechatRooms.setOnHoldByRoomId(roomId),
 			Subscriptions.setOnHoldByRoomId(roomId),
-			Message.saveSystemMessage<IOmnichannelSystemMessage>('omnichannel_placed_chat_on_hold', roomId, '', onHoldBy, { comment }),
+			Message.saveSystemMessage<IOmnichannelSystemMessage>('omnichannel_placed_chat_on_hold', roomId, '', onHoldBy, { comment, timeout }),
 		]);
 
 		await callbacks.run('livechat:afterOnHold', room);
