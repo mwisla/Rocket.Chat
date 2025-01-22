@@ -113,6 +113,7 @@ const processMessage = async (message) => {
 	//console.log(message.t, new Date().toTimeString(), message);
 
 	if (message.t === 'livechat-close') {
+		await clearSessionEndingAlerts();
 		await closeChat(message);
 	} else if (message.t === 'omnichannel_placed_chat_on_hold') {
 		await clearSessionEndingAlerts();
@@ -139,8 +140,7 @@ const clearSessionEndingAlerts = async () => {
 
 let displaySessionEndingAlertTimeout;
 const displaySessionEndingAlert = async (timeout) => {
-	const timeoutMs = timeout * 1000;
-	const timezone = new Date().getTimezoneOffset() * 60 * 1000;
+	const timeoutMs = (timeout ?? 600) * 1000;
 	const dateEnd = new Date(new Date().getTime() + timeoutMs);
 	const showBefore = 30 * 1000;//30s
 	const alertTomeut = timeoutMs > showBefore ? timeoutMs - showBefore : 0;
