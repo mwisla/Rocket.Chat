@@ -14,7 +14,7 @@ import Header from '../Header';
 import Tooltip from '../Tooltip';
 
 type screenHeaderProps = {
-	alerts: { id: string; children: ComponentChildren; [key: string]: unknown }[];
+	alerts: { id: string; children: ComponentChildren;[key: string]: unknown }[];
 	agent: Agent;
 	notificationsEnabled: boolean;
 	minimized: boolean;
@@ -69,6 +69,13 @@ const ScreenHeader = ({
 		return title;
 	};
 
+	const headerLabel = () => {
+		if (agent?.name) {
+			return agent.name + (agent?.status ? ' ' + t('status') + ' ' + t('status_' + agent.status) : '');
+		}
+		return title;
+	};
+
 	return (
 		<Header
 			ref={headerRef}
@@ -90,7 +97,7 @@ const ScreenHeader = ({
 			)}
 
 			<Header.Content>
-				<Header.Title>{headerTitle()}</Header.Title>
+				<Header.Title label={headerLabel()}>{headerTitle()}</Header.Title>
 				{agent?.email && <Header.SubTitle>{agent.email}</Header.SubTitle>}
 				{agent?.phone && <Header.CustomField>{agent.phone}</Header.CustomField>}
 			</Header.Content>
@@ -121,8 +128,8 @@ const ScreenHeader = ({
 								<OpenWindowIcon width={20} height={20} />
 							</Header.Action>
 						</Tooltip.Trigger>
-					)}		
-					</Header.Actions>
+					)}
+				</Header.Actions>
 			</Tooltip.Container>
 		</Header>
 	);

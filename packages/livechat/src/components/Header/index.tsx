@@ -21,6 +21,7 @@ type HeaderProps = {
 type HeaderComponentProps = {
 	children?: ComponentChildren;
 	className?: string;
+	label?: string;
 };
 
 export const Header = ({
@@ -55,8 +56,8 @@ export const Content = ({ children, className = undefined, ...props }: HeaderCom
 	</div>
 );
 
-export const Title = ({ children, className = undefined, ...props }: HeaderComponentProps) => (
-	<div className={createClassName(styles, 'header__title', {}, [className])} data-qa='header-title' {...props}>
+export const Title = ({ children, label, className = undefined, ...props }: HeaderComponentProps) => (
+	<div className={createClassName(styles, 'header__title', {}, [className])} data-qa='header-title' aria-label={label} {...props}>
 		{children}
 	</div>
 );

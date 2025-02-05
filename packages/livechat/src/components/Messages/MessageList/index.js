@@ -213,6 +213,7 @@ export class MessageList extends MemoizedComponent {
 
 	render = ({ className, style = {} }) => (
 		<div
+			id="dialog-messages"
 			onScroll={this.handleScroll}
 			className={createClassName(styles, 'message-list', {}, [className])}
 			onClick={this.handleClick}

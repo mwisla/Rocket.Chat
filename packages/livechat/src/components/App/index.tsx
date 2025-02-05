@@ -44,7 +44,11 @@ const AppConnector = () => {
 	};
 
 	return (
-		<div id='app' ref={appref}>
+		<div id='app'
+			ref={appref}
+			role="dialog"
+			aria-labelledby="dialog-header"
+			aria-describedby="files-drop-target">
 			<StoreProvider>
 				<SDKProvider serverURL={host}>
 					<ConnectionStatusProvider>

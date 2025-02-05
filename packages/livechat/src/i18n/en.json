@@ -119,6 +119,7 @@
     "message_sended" : "Your message has been sent",
     "session_ending_at" : "Session will end at {{time}}, send message to extend.",
     "session_extend":"Extend session",
-    "avatar_description": "{{name}} avatar"
+    "avatar_description": "{{name}} avatar",
+    "status": "Status"
   }
 }
